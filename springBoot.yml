@@ -1,34 +1,33 @@
-apiVersion: apps/v1
-kind: Deployment
+# Replication Controller for springapp
+apiVersion: v1
+kind: ReplicationController
 metadata:
-  name: springboot
+  name: spring-controller
 spec:
   replicas: 1
   selector:
-    matchLabels:
-      app: springboot
+    app: springboot
   template:
     metadata:
       labels:
         app: springboot
     spec:
       containers:
-        - name: springboot
-          image: nipuntlankaiit/springboot
-          ports:
-            - containerPort: 8080
-
-# service type loadbalancer
+      - image: nipuntlankaiit/springboot
+        name: springboot
+        ports:
+        - containerPort: 8080     
 ---
+# Node Port Service For SpringApp
 apiVersion: v1
 kind: Service
 metadata:
-  name: springboot-svc
+  name: springboot
 spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
   selector:
     app: springboot
-  ports:
-    - protocol: TCP
-      port: 8080
-      targetPort: 8080
-  type: LoadBalancer
+
