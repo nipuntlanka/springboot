@@ -41,6 +41,6 @@ public class MainClass {
 
     @RequestMapping(value = "testget", method = RequestMethod.GET)
     public String testget(){
-        return "Hello Nippa";
+        return "Hello Nippaaaaaaaaaaaaaaa";
     }
 }
