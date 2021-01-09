@@ -32,4 +32,4 @@ spec:
       port: 8085
       targetPort: 8085
       nodePort: 30010
-  type: LoadBalancer
+  type: NodePort
