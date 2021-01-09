@@ -15,7 +15,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: my-angular-app
-        image: nipuntlankaiit/springboot:0.3
+        image: nipuntlankaiit/springboot:0.4
         ports:
         - containerPort: 8085
 # service type loadbalancer
