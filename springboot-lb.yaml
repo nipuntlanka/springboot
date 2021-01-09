@@ -12,6 +12,7 @@ spec:
       labels:
         app: angular-app
     spec:
+      terminationGracePeriodSeconds: 30
       containers:
       - name: my-angular-app
         image: nipuntlankaiit/springboot:latest
