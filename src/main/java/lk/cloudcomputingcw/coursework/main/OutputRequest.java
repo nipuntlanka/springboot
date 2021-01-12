@@ -9,6 +9,8 @@ public class OutputRequest {
 
     private List<Map<String, Object>> ret;
 
+    private String result;
+
     public String getOrbitName() {
         return orbitName;
     }
@@ -25,11 +27,20 @@ public class OutputRequest {
         this.ret = ret;
     }
 
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
     @Override
     public String toString() {
         return "OutputRequest{" +
                 "orbitName='" + orbitName + '\'' +
                 ", ret=" + ret +
+                ", result='" + result + '\'' +
                 '}';
     }
 }

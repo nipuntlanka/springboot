@@ -27,4 +27,8 @@ public class MainService {
     public List<Map<String, Object>> getConstellationInfo(InpurRequest inpurRequest) {
         return mainRepo.getConstellationInfo();
     }
+
+    public boolean auth(InpurRequest inpurRequest) {
+        return mainRepo.auth(inpurRequest);
+    }
 }

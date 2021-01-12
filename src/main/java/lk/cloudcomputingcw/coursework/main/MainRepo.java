@@ -21,7 +21,7 @@ public class MainRepo {
 
 
             List<Map<String, Object>> queryForList = jdbcTemplate.queryForList(
-                    "select * from starlink.Orbits where orbit_id='"+id+"'");
+                    "select * from starlink.Orbits where orbit_id='" + id + "'");
 
             response = queryForList;
         } catch (Exception ex) {
@@ -78,5 +78,25 @@ public class MainRepo {
             ex.printStackTrace();
         }
         return response;
+    }
+
+    public boolean auth(InpurRequest inpurRequest) {
+        boolean ret = false;
+        List<Map<String, Object>> response = null;
+        try {
+
+
+            List<Map<String, Object>> queryForList = jdbcTemplate.queryForList(
+                    "SELECT * FROM starlink.users where username='" + inpurRequest.getUsername().trim() + "' and auth_tocken='" + inpurRequest.getAuth_token() + "'");
+
+            response = queryForList;
+            if (response.size() > 0) {
+                ret = true;
+            }
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+        }
+        return ret;
     }
 }

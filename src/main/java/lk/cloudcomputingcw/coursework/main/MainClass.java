@@ -14,28 +14,52 @@ public class MainClass {
     @RequestMapping(value = "getOrbitName", method = RequestMethod.POST)
     public OutputRequest getOrbitNameById(@Validated @RequestBody InpurRequest inpurRequest){
         OutputRequest outputRequest = new OutputRequest();
-        outputRequest.setOrbitName(mainService.getOrbitName(inpurRequest.getId()));
+        if(mainService.auth(inpurRequest)){
+            outputRequest.setResult("Success");
+            outputRequest.setOrbitName(mainService.getOrbitName(inpurRequest.getId()));
+        }else{
+            outputRequest.setResult("Failed. Cannot authorize");
+        }
+
         return outputRequest;
     }
 
     @RequestMapping(value = "getOrbitInfo", method = RequestMethod.POST)
     public OutputRequest getOrbitInfo(@Validated @RequestBody InpurRequest inpurRequest){
         OutputRequest outputRequest = new OutputRequest();
-        outputRequest.setRet(mainService.getOrbitInfo(inpurRequest));
+        if(mainService.auth(inpurRequest)){
+            outputRequest.setResult("Success");
+            outputRequest.setRet(mainService.getOrbitInfo(inpurRequest));
+        }else{
+            outputRequest.setResult("Failed. Cannot authorize");
+        }
+
         return outputRequest;
     }
 
     @RequestMapping(value = "getSatteliteInfo", method = RequestMethod.POST)
     public OutputRequest getSatteliteInfo(@Validated @RequestBody InpurRequest inpurRequest){
         OutputRequest outputRequest = new OutputRequest();
-        outputRequest.setRet(mainService.getSatteliteInfo(inpurRequest));
+        if(mainService.auth(inpurRequest)){
+            outputRequest.setResult("Success");
+            outputRequest.setRet(mainService.getSatteliteInfo(inpurRequest));
+        }else{
+            outputRequest.setResult("Failed. Cannot authorize");
+        }
+
         return outputRequest;
     }
 
     @RequestMapping(value = "getConstellationInfo", method = RequestMethod.POST)
     public OutputRequest getConstellationInfo(@Validated @RequestBody InpurRequest inpurRequest){
         OutputRequest outputRequest = new OutputRequest();
-        outputRequest.setRet(mainService.getConstellationInfo(inpurRequest));
+        if(mainService.auth(inpurRequest)){
+            outputRequest.setResult("Success");
+            outputRequest.setRet(mainService.getConstellationInfo(inpurRequest));
+        }else{
+            outputRequest.setResult("Failed. Cannot authorize");
+        }
+
         return outputRequest;
     }
 
